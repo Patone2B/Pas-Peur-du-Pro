@@ -10,10 +10,9 @@
 **PasPeurduPro** est un projet éducatif visant à rendre l’apprentissage des logiciels numériques **simple, intuitif et accessible**, même pour les débutants complets.
 
 Le site propose des tutoriels pratiques couvrant :
-- la **vidéo** (DaVinci Resolve, montage simple, workflows),
+- la **vidéo** (DaVinci Resolve, montage simple , Première Pro),
 - la **3D** (modélisation, concepts de base),
-- la **programmation visuelle ou textuelle**,
-- les **outils de production numérique** (bureautique, création d’images, outils de capture),
+- les **outils de production numérique** ( LM Studio , 
 - des **guides pas à pas** avec exemples concrets.
 
 🌐 **Accéder au site :**  
@@ -62,27 +61,12 @@ Les contenus sont gratuits, sans publicité, et conçus pour tous les niveaux.
 - Explications visuelles  
 - Résolution des erreurs fréquentes  
 
-### ✔ Fiches pédagogiques prêtes à l’emploi
-- Résumés clairs  
-- Diagrammes simples  
-- Exercices courts  
-
-### ✔ Vidéos pédagogiques
-- Montages courts et didactiques  
-- Illustrations animées  
-- Explications synthétiques  
-
 ### ✔ Modules interactifs (en évolution)
 - Quiz  
 - Évaluations rapides  
 - Exercices d’entraînement  
 
 ![Exemple interface](assets/images/exemple-interface.png)
-
----
-
-## 🏗️ Architecture du dépôt
-
 
 ---
 
@@ -127,25 +111,11 @@ GitHub Pages reconstruit le site après chaque commit, garantissant une mise à 
 
 ---
 
-## 🤝 Contribuer au projet
-
-Toute aide ou suggestion est la bienvenue !
-
-### Comment contribuer :
-1. **Fork** du dépôt  
-2. Créer une branche de travail  
-3. Apporter les modifications  
-4. Ouvrir une **Pull Request**  
-
-Merci aux personnes qui souhaitent aider à améliorer la plateforme.
-
----
-
 ## 📬 Contact
 
 Pour toute question, suggestion, ou collaboration :
 
-**📧 Email :** contact.paspeurdupro@gmail.com  
+**📧 Email :** paspeurdupro@gmail.com 
 *(adresse fictive — tu peux la remplacer par la tienne)*
 
 ---
