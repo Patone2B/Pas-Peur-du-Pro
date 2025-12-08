@@ -1,7 +1,7 @@
 # 🎓 PasPeurduPro  
 ### *Tutoriels logiciels simples, clairs et accessibles à tous*
 
-![Bannière du projet](assets/images/banniere-paspeurdupro.png)
+![Bannière du projet](paspeurdupro.webp)
 
 ---
 
