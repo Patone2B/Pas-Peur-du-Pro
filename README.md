@@ -103,8 +103,6 @@ GitHub Pages reconstruit le site après chaque commit, garantissant une mise à 
 - Optimisations SEO structurelles
 - Développement d’un espace "guides rapides"
 
-![Roadmap](assets/images/roadmap.png)
-
 ---
 
 ## 📬 Contact
