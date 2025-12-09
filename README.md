@@ -12,7 +12,7 @@
 Le site propose des tutoriels pratiques couvrant :
 - la **vidéo** (DaVinci Resolve, montage simple , Première Pro),
 - la **3D** (modélisation, concepts de base),
-- les **outils de production numérique** ( LM Studio , 
+- les **outils de production numérique** ( LM Studio , Adobe Dreamweaver ... ),
 - des **guides pas à pas** avec exemples concrets.
 
 🌐 **Accéder au site :**  
@@ -63,10 +63,9 @@ Les contenus sont gratuits, sans publicité, et conçus pour tous les niveaux.
 
 ### ✔ Modules interactifs (en évolution)
 - Quiz  
-- Évaluations rapides  
-- Exercices d’entraînement  
+- Évaluations rapides (prévu dans la feuille de route, non encore déployé)
+- Exercices d’entraînement  (prévu dans la feuille de route, non encore déployé)
 
-![Exemple interface](assets/images/exemple-interface.png)
 
 ---
 
@@ -116,16 +115,16 @@ GitHub Pages reconstruit le site après chaque commit, garantissant une mise à 
 Pour toute question, suggestion, ou collaboration :
 
 **📧 Email :** paspeurdupro@gmail.com 
-*(adresse fictive — tu peux la remplacer par la tienne)*
 
 ---
-
-## 🔒 Licence
-
-Le projet peut être publié sous licence libre (MIT, GPL, CC-BY) ou sous une licence personnalisée.  
-Tu peux me demander une licence adaptée à ton projet pédagogique si besoin.
-
----
+##
+📜 Licence
+Le projet est protégé par la licence Creative Commons CC BY-NC-ND 4.0.
+Cela implique :
+✔ Partage autorisé, à condition de citer la source ;
+❌ Aucune utilisation commerciale n’est permise ;
+❌ Aucune modification, adaptation ou reproduction du contenu n’est autorisée.
+En résumé : le contenu peut être partagé, mais ne peut ni être modifié, ni utilisé à des fins commerciales.
 
 ## 🏁 Remerciements
 
