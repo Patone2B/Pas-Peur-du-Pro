@@ -32,7 +32,6 @@ L’objectif principal est d’aider toute personne à :
 
 > 📌 *PasPeurduPro repose sur une pédagogie accessible, visuelle et orientée sur l’expérience utilisateur.*
 
-![Illustration tutoriels](assets/images/illustration-tutoriels.png)
 
 ---
 
@@ -80,7 +79,7 @@ Les contenus sont gratuits, sans publicité, et conçus pour tous les niveaux.
 | **XML** | Sitemap pour le référencement |
 | **Service Worker** | Fonctionnalités hors ligne (si activé) |
 
-![Technologies utilisées](assets/images/technos.png)
+
 
 ---
 
@@ -99,10 +98,8 @@ GitHub Pages reconstruit le site après chaque commit, garantissant une mise à 
 ## 📈 Améliorations prévues
 
 - Ajout de tutoriels thématiques (vidéo, 3D, code, bureautique)
-- Création de quiz par logiciel
 - Intégration d’exercices auto-corrigés
 - Navigation améliorée
-- Ajout d’une chaîne YouTube dédiée
 - Optimisations SEO structurelles
 - Développement d’un espace "guides rapides"
 
