@@ -505,33 +505,35 @@ iframe {
   font-size: 0.85rem;
   color: #6b7280;
 }
-
 /* =========================
-   📸 INSTAGRAM LINK BUTTON
+   ▶️ YOUTUBE LINK BUTTON
    ========================= */
-.insta-link {
+.youtube-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  background: linear-gradient(135deg, #fcb045, #fd1d1d, #833ab4);
-  padding: 0.55rem 1.1rem;
+  gap: 0.55rem;
+  background: #FF0000; /* Rouge YouTube */
+  padding: 0.55rem 1.25rem;
   border-radius: 999px;
   color: white;
   text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 18px rgba(255, 0, 0, 0.35);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.insta-link:hover {
+.youtube-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 26px rgba(255, 0, 0, 0.45);
 }
 
-.insta-icon {
-  width: 20px;
-  height: 20px;
+.youtube-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
+
 
 /* =========================
    🎨 CONTENT / PROSE EXTENSIONS
