@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://1645ce79.pas-peur-du-pro.pages.dev/sitemap.xml
+Sitemap: https://pas-peur-du-pro.pages.dev/sitemap.xml
