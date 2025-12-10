@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://patone2b.github.io/Pas-Peur-du-Pro/sitemap.xml
+
+Sitemap: https://1645ce79.pas-peur-du-pro.pages.dev/sitemap.xml
