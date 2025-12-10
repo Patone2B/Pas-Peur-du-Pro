@@ -39,13 +39,13 @@ const quizDB = {
     {
       q: "Comment s’appelle la fonctionnalité qui permet de couper un rush en deux ?",
       choices: ["Un cut", "Un ciseau", "Couper un rush"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Faire un cut, c’est couper un clip en deux (outil Rasoir, touche C) pour monter plus précisément."
     },
     {
       q: "Dans quel onglet trouve-t-on, par exemple, la réverbération, les transitions ou encore le fondu exponentiel ?",
       choices: ["Onglet Effets", "Onglet Options d’effet", "Onglet Modification de rush"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Ces éléments se trouvent dans l’onglet Effets (audio/vidéo)."
     }
   ],
@@ -55,32 +55,32 @@ const quizDB = {
     {
       q: "Après avoir dessiné sur une face en 2D, sur quel bouton faut-il appuyer ?",
       choices: ["Terminer l’esquisse", "Finir l’esquisse", "Continuer"],
-      correct: 1,
+      correct: 0,
       explain: "💬 On valide le sketch avec « Terminer l’esquisse » pour passer à la 3D."
     },
     {
       q: "À quoi sert Fusion 360 ?",
       choices: ["Monter une vidéo", "Utiliser une IA en local", "Modéliser des objets, et éventuellement les imprimer ensuite"],
-      correct: 3,
+      correct: 2,
       explain: "💬 CAO/FAO : on conçoit des objets 3D et on peut les préparer pour l’impression 3D."
     },
     {
       q: "Comment s’appelle la fonctionnalité qui permet d’arrondir les angles ?",
       choices: ["Un congé", "Une extrusion", "Un arrondissement"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Le congé arrondit les arêtes/coins d’une pièce."
     },
     {
       q: "Quel est le fichier le plus pris en charge par le plus de logiciels ?",
       choices: ["STL", "OBJ", "3MF"],
-      correct: 2,
+      correct: 0,
       explain: "💬 STL est le format le plus universel, surtout pour l’impression 3D."
-    }
+    },
     {
       q: "Quelle fonctionnalité permet de “nettoyer” et d’obtenir un aperçu plus propre du modèle 3D afin de voir ce que cela donnera réellement ?",
       choices: ["Un rendu", "Un nettoyage", "Il faut un logiciel externe pour le faire"],
-      correct: 1,
-      explain: "Il est possible de demander à Fusion 360, dans l’onglet Rendu, d’effectuer un rendu. Vous allez voir : c’est très classe."
+      correct: 0,
+      explain: "💬 Il est possible de demander à Fusion 360, dans l’onglet Rendu, d’effectuer un rendu. Vous allez voir : c’est très classe."
     }
   ],
 
@@ -89,13 +89,13 @@ const quizDB = {
     {
       q: "À quoi sert Adobe Dreamweaver ?",
       choices: ["Coder en HTML", "Modéliser", "Faire du mixage audio"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Dreamweaver sert à créer/éditer du HTML/CSS/JS et prévisualiser le rendu."
     },
     {
       q: "Quelle est la touche qui permet d’afficher la page web dans le navigateur ?",
       choices: ["F12", "Impr Écran", "F9"],
-      correct: 1,
+      correct: 0,
       explain: "💬 F12 lance l’aperçu dans le navigateur."
     },
     {
@@ -111,13 +111,13 @@ const quizDB = {
     {
       q: "Dreamweaver affiche-t-il en couleur la syntaxe HTML ?",
       choices: ["Oui", "Non"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Oui, coloration syntaxique (balises, attributs, contenu) pour mieux lire le code."
     },
     {
       q: "Quelle est l’extension d’un fichier HTML ?",
       choices: [".html", ".web", ".codehtml"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Les fichiers web de base portent l’extension .html."
     }
   ],
@@ -127,7 +127,7 @@ const quizDB = {
     {
       q: "GitHub permet-il de publier une page web ?",
       choices: ["Oui", "Non"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Oui, via GitHub Pages pour un site statique (HTML/CSS/JS) gratuit."
     },
     {
@@ -151,12 +151,12 @@ const quizDB = {
       choices: ["Tous", "Aucun", "Un site web statique (HTML/CSS/JS)"],
       correct: 2,
       explain: "💬 GitHub Pages héberge des sites statiques (HTML/CSS/JS)."
-    }
-     {
+    },
+    {
       q: "À qui appartient GitHub ?",
       choices: ["Apple", "Amazon", "Microsoft"],
-      correct: 3,
-      explain: "GitHub appartient à Microsoft depuis le 4 juin 2018, pour un montant total de 7,5 milliards de dollars."
+      correct: 2,
+      explain: "💬 GitHub appartient à Microsoft depuis le 4 juin 2018, pour un montant total de 7,5 milliards de dollars."
     }
   ],
 
@@ -171,7 +171,7 @@ const quizDB = {
     {
       q: "Que permet la section Fusion dans DaVinci Resolve ?",
       choices: ["Le compositing et les effets visuels", "Le montage audio", "Le mixage rapide"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Fusion = VFX/compositing 2D/3D (incrustations, animations, etc.)."
     },
     {
@@ -181,7 +181,7 @@ const quizDB = {
         "Edit = effets spéciaux",
         "Cut = mixage audio"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Cut pour aller vite ; Edit pour les montages complexes et précis."
     },
     {
@@ -191,15 +191,15 @@ const quizDB = {
         "Uniquement le nom du projet",
         "Le thème du rendu"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Delivery règle format/codec, résolution, destination/nom de fichier."
-    }
+    },
     {
       q: "Peut-on ajouter du texte sur une vidéo ?",
       choices: ["Oui", "Non", "Peut-être"],
-      correct: 1,
-      explain: "Oui, sur DaVinci Resolve, il est possible d’ajouter du texte sur n’importe quel média, que ce soit une image ou une vidéo."
-    },
+      correct: 0,
+      explain: "💬 Oui, sur DaVinci Resolve, il est possible d’ajouter du texte sur n’importe quel média, que ce soit une image ou une vidéo."
+    }
   ],
 
   // 🧩 Adobe Media Encoder
@@ -207,7 +207,7 @@ const quizDB = {
     {
       q: "Quelles options influencent principalement la taille finale du fichier ?",
       choices: ["Résolution et débit (bitrate)", "Durée du projet", "Type de piste audio"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Plus la résolution et le bitrate sont élevés, plus le fichier est lourd."
     },
     {
@@ -217,7 +217,7 @@ const quizDB = {
         "Créer des montages",
         "Gérer les effets spéciaux"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Il encode/convertit les projets vers des fichiers vidéo diffusables."
     },
     {
@@ -227,7 +227,7 @@ const quizDB = {
         "Pour accélérer la lecture",
         "Pour ajouter des transitions"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Il libère Premiere Pro et gère plusieurs exports en file d’attente."
     },
     {
@@ -237,7 +237,7 @@ const quizDB = {
         "Supprimer les fichiers inutiles",
         "Rendre en haute qualité"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 La queue enchaîne des rendus sans intervention."
     },
     {
@@ -245,13 +245,14 @@ const quizDB = {
       choices: ["Le bitrate", "La fréquence d’images", "Le codec audio"],
       correct: 0,
       explain: "💬 Baisser légèrement le bitrate réduit le temps et la taille, avec une qualité encore propre."
-    }
+    },
     {
       q: "Sur Adobe Media Encoder, puis-je exporter ou convertir des fichiers uniquement s’ils sont au format vidéo (MP4, MOV…) ?",
       choices: ["Oui", "Non, cela fonctionne pour tout", "Oui, mais il faut acheter un abonnement en plus du logiciel"],
-      correct: 2,
-      explain: "Adobe Media Encoder permet également de convertir des fichiers audio ou même des fichiers image."
-    },  ],
+      correct: 1,
+      explain: "💬 Adobe Media Encoder permet également de convertir des fichiers audio ou même des fichiers image."
+    }
+  ],
 
   // 🧠 LM Studio
   "lm-studio": [
@@ -288,13 +289,13 @@ const quizDB = {
         "Pour sauvegarder la conversation",
         "Pour éteindre le GPU"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Éjecter libère la RAM et évite la saturation du système."
     },
     {
       q: "LM Studio est-il un logiciel gratuit et légal ?",
       choices: ["Oui", "Non", "Il est légal mais payant"],
-      correct: 1,
+      correct: 0,
       explain: "💬 LM Studio est gratuit et légal. Il permet d’installer une IA en local gratuitement. Les modèles proposés sont également gratuits et conformes à leurs licences."
     }
   ],
@@ -308,7 +309,7 @@ const quizDB = {
         "Un modèle 3D",
         "Un plan de caméra"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Blueprint = programmation visuelle via nœuds logiques."
     },
     {
@@ -318,7 +319,7 @@ const quizDB = {
         "Par clic droit",
         "Automatiquement"
       ],
-      correct: 2,
+      correct: 0,
       explain: "💬 Les fils transportent le flux d’exécution et les données entre nœuds."
     },
     {
@@ -349,6 +350,7 @@ const quizDB = {
     }
   ]
 };
+
 
 
 // ================== 2) QUIZ — Injection + logique ==================
