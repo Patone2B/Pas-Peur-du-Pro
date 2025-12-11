@@ -161,7 +161,7 @@ const quizDB = {
   ],
 
   // 🎥 DaVinci Resolve
-  "davinci": [
+  "DaVinci-Resolve": [
     {
       q: "Quelle est la page du logiciel dédiée à la correction colorimétrique ?",
       choices: ["Edit", "Fusion", "Color"],
@@ -171,7 +171,7 @@ const quizDB = {
     {
       q: "Que permet la section Fusion dans DaVinci Resolve ?",
       choices: ["Le compositing et les effets visuels", "Le montage audio", "Le mixage rapide"],
-      correct: 0,
+      correct: 1,
       explain: "💬 Fusion = VFX/compositing 2D/3D (incrustations, animations, etc.)."
     },
     {
@@ -181,7 +181,7 @@ const quizDB = {
         "Edit = effets spéciaux",
         "Cut = mixage audio"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Cut pour aller vite ; Edit pour les montages complexes et précis."
     },
     {
@@ -191,13 +191,13 @@ const quizDB = {
         "Uniquement le nom du projet",
         "Le thème du rendu"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Delivery règle format/codec, résolution, destination/nom de fichier."
     },
     {
       q: "Peut-on ajouter du texte sur une vidéo ?",
       choices: ["Oui", "Non", "Peut-être"],
-      correct: 0,
+      correct: 1,
       explain: "💬 Oui, sur DaVinci Resolve, il est possible d’ajouter du texte sur n’importe quel média, que ce soit une image ou une vidéo."
     }
   ],
@@ -207,7 +207,7 @@ const quizDB = {
     {
       q: "Quelles options influencent principalement la taille finale du fichier ?",
       choices: ["Résolution et débit (bitrate)", "Durée du projet", "Type de piste audio"],
-      correct: 0,
+      correct: 1,
       explain: "💬 Plus la résolution et le bitrate sont élevés, plus le fichier est lourd."
     },
     {
@@ -217,7 +217,7 @@ const quizDB = {
         "Créer des montages",
         "Gérer les effets spéciaux"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Il encode/convertit les projets vers des fichiers vidéo diffusables."
     },
     {
@@ -227,7 +227,7 @@ const quizDB = {
         "Pour accélérer la lecture",
         "Pour ajouter des transitions"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Il libère Premiere Pro et gère plusieurs exports en file d’attente."
     },
     {
@@ -237,14 +237,8 @@ const quizDB = {
         "Supprimer les fichiers inutiles",
         "Rendre en haute qualité"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 La queue enchaîne des rendus sans intervention."
-    },
-    {
-      q: "Quelle option modifier pour accélérer l’encodage sans trop perdre en qualité ?",
-      choices: ["Le bitrate", "La fréquence d’images", "Le codec audio"],
-      correct: 0,
-      explain: "💬 Baisser légèrement le bitrate réduit le temps et la taille, avec une qualité encore propre."
     },
     {
       q: "Sur Adobe Media Encoder, puis-je exporter ou convertir des fichiers uniquement s’ils sont au format vidéo (MP4, MOV…) ?",
@@ -289,13 +283,13 @@ const quizDB = {
         "Pour sauvegarder la conversation",
         "Pour éteindre le GPU"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Éjecter libère la RAM et évite la saturation du système."
     },
     {
       q: "LM Studio est-il un logiciel gratuit et légal ?",
       choices: ["Oui", "Non", "Il est légal mais payant"],
-      correct: 0,
+      correct: 1,
       explain: "💬 LM Studio est gratuit et légal. Il permet d’installer une IA en local gratuitement. Les modèles proposés sont également gratuits et conformes à leurs licences."
     }
   ],
@@ -309,7 +303,7 @@ const quizDB = {
         "Un modèle 3D",
         "Un plan de caméra"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Blueprint = programmation visuelle via nœuds logiques."
     },
     {
@@ -319,7 +313,7 @@ const quizDB = {
         "Par clic droit",
         "Automatiquement"
       ],
-      correct: 0,
+      correct: 1,
       explain: "💬 Les fils transportent le flux d’exécution et les données entre nœuds."
     },
     {
