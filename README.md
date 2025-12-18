@@ -89,7 +89,7 @@ Le site est publié automatiquement via **GitHub Pages**.
 
 - Branche de déploiement : `main`
 - Répertoire : `/ (root)`
-- URL : https://patone2b.github.io/Pas-Peur-du-Pro/
+- URL : https://pas-peur-du-pro.pages.dev
 
 GitHub Pages reconstruit le site après chaque commit, garantissant une mise à jour continue.
 
