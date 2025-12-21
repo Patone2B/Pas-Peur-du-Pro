@@ -605,9 +605,9 @@ document.addEventListener('DOMContentLoaded', function() {
     "💡 Adobe Dreamweaver reste l’un des rares éditeurs mêlant édition visuelle et code pur.",
     "😂 L’outil «Blueprint» de Unreal permet à des non-programmeurs de créer des jeux entiers sans écrire une ligne de code — ce qui a surpris des développeurs “pur C++”",
     "   Le premier site web est : http://info.cern.ch",
-    " Les créateurs ont vendu GitHub à Microsoft pour… 7,5 milliards $"
+    " Les créateurs ont vendu GitHub à Microsoft pour… 7,5 milliards $",
     "Le mot “Dream Weaver” (tisseur de rêves) apparaît dans une chanson des années 70 ; les fondateurs l’ont repris pour évoquer la “création de sites rêvés”",
-    "😂 Le logiciel a été lancé initialement sous le nom de ReelTime chez SuperMac Technology, pour la carte de capture Video Spigot, avant d’être acquis par Adobe Systems et rebaptisé « Premiere »"
+    "😂 Le logiciel a été lancé initialement sous le nom de ReelTime chez SuperMac Technology, pour la carte de capture Video Spigot, avant d’être acquis par Adobe Systems et rebaptisé « Premiere »";
   ];
 
   // Mélange aléatoire à chaque chargement
