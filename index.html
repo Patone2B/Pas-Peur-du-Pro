@@ -45,6 +45,7 @@
         <button class="round-button orange" onclick="showContent('github')">GitHub</button>
         <button class="round-button orange" onclick="showContent('adobe-dreamweaver')">Adobe Dreamweaver</button>
     <button class="round-button orange" onclick="showContent('Editeur-HTML')"> Editeur-HTML</button>
+	  <button class="round-button blue" onclick="showContent('Editeur-HTML')"> Inteligence Artificiel</button>
     </div>
 <!-- LÉGENDE DES COULEURS -->
   <div class="legend-aide" aria-label="Légende des catégories">
@@ -1278,6 +1279,17 @@ Ils peuvent être librement consultés, téléchargés et modifiés à des fins 
 
 
 </div>
+ <div id="Inteligence Artificiel" class="content">
+	 <div id="mistral-ai" class="content">
+  <h2>Mistral AI</h2>
+
+  <textarea id="mistralPrompt" placeholder="Écris ta question ici"></textarea>
+
+  <button id="mistralSend">Envoyer</button>
+  <button id="mistralClear">Effacer</button>
+
+  <pre id="mistralAnswer"></pre>
+</div>
 
 <!-- ================== QUIZ — MODAL (à coller avant </body>) ================== -->
 <div id="quizModal" class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
@@ -1388,6 +1400,8 @@ Je suis un passionné autodidacte des logiciels comme Adobe Premiere Pro, Fusion
 </footer>
 
 <script src="main.js"></script>
+<script src="ai-mistral.js"></script>
+
 
 </body>
 </html>
