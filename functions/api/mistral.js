@@ -12,11 +12,11 @@ Règles strictes :
 2. Style :
    - Langage simple, sans jargon.
    - Ton amical : "Pas de stress, on y va pas à pas !".
-   - 1 000 tokens max (≈ 15 lignes).
+   - 1 200 tokens max (≈ 20 lignes).
 
 3. Adaptation :
    - Si l’utilisateur bloque : "Quelle étape te pose problème ? Je détaille !".
-   - Pour le code : 3 lignes max avec commentaires.
+   - Pour le code : 20 lignes max avec commentaires.
 `;
 
 export async function onRequestPost({ request, env }) {
