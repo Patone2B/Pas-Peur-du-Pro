@@ -716,3 +716,103 @@ iframe {
   width: min(100% - 32px, 760px);
   margin: 0; /* plus besoin du margin auto */
 }
+/* ===========================
+   UI Mistral (bloc IA)
+   =========================== */
+
+#mistral-ai {
+  max-width: 900px;
+  margin: 14px auto;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px);
+}
+
+/* Titre */
+#mistral-ai h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.2px;
+}
+
+/* Zone de saisie */
+#mistralPrompt {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.25);
+  color: inherit;
+  outline: none;
+  line-height: 1.45;
+}
+
+#mistralPrompt::placeholder {
+  opacity: 0.65;
+}
+
+#mistralPrompt:focus {
+  border-color: rgba(120, 170, 255, 0.65);
+  box-shadow: 0 0 0 4px rgba(120, 170, 255, 0.15);
+}
+
+/* Ligne des boutons */
+#mistral-ai .mistral-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/* Boutons IA (si tu n’as pas déjà un style global) */
+#mistralSend, #mistralClear {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.05s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+#mistralSend:hover, #mistralClear:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.22);
+}
+
+#mistralSend:active, #mistralClear:active {
+  transform: translateY(1px);
+}
+
+#mistralSend:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Sortie réponse */
+#mistralAnswer {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.20);
+  white-space: pre-wrap;
+  line-height: 1.5;
+  min-height: 64px;
+}
+
+/* Petit badge “IA” optionnel (si tu veux en mettre un) */
+#mistral-ai .mistral-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 170, 255, 0.40);
+  background: rgba(120, 170, 255, 0.12);
+  margin-bottom: 8px;
+}
