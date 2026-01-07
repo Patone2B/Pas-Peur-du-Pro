@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   clear.addEventListener("click", () => {
     input.value = "";
     output.textContent = "";
+    output.classList.remove("loading");
   });
 
   send.addEventListener("click", async () => {
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     output.textContent = "⏳ Réponse en cours...";
+    output.classList.add("loading");
 
     try {
       const r = await fetch("/api/mistral", {
@@ -28,8 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const data = await r.json().catch(() => ({}));
-      output.textContent = data.text || data.error || "Réponse vide.";
+      const raw = data.text || data.error || "Réponse vide.";
+
+      output.classList.remove("loading");
+      output.innerHTML = DOMPurify.sanitize(marked.parse(raw));
     } catch {
+      output.classList.remove("loading");
       output.textContent = "❌ Erreur réseau.";
     }
   });
