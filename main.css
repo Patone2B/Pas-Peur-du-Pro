@@ -822,4 +822,54 @@ iframe {
 }
 
 
+/* Réponse IA : style "chat" */
+.mistral-answer {
+  margin-top: 14px;
+  padding: 14px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.12);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  white-space: normal;        /* important: pas pre-wrap ici */
+  overflow-wrap: anywhere;
+}
+
+/* Titres markdown */
+.mistral-answer h1,
+.mistral-answer h2,
+.mistral-answer h3 {
+  margin: 10px 0 8px;
+  font-weight: 700;
+}
+
+.mistral-answer hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin: 12px 0;
+}
+
+/* Listes */
+.mistral-answer ul,
+.mistral-answer ol {
+  margin: 8px 0 8px 18px;
+}
+
+/* Code inline + bloc */
+.mistral-answer code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.9em;
+}
+
+.mistral-answer pre {
+  margin: 10px 0 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(255,255,255,0.12);
+  overflow: auto;
+}
 
