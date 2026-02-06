@@ -16,7 +16,7 @@ Le site propose des tutoriels pratiques couvrant :
 - des **guides pas à pas** avec exemples concrets.
 
 🌐 **Accéder au site :**  
-https://patone2b.github.io/Pas-Peur-du-Pro/
+https://pas-peur-du-pro.pages.dev
 
 ---
 
