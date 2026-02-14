@@ -1,0 +1,50 @@
+<section class="card">
+  <h2 class="card-title">🖥️ Analyse de configuration</h2>
+  <p class="subtitle">Choisis ton CPU/GPU/RAM/stockage, et on te dit quels logiciels sont OK, limites ou non recommandés.</p>
+
+  <div class="field">
+    <label for="os">Système</label>
+    <select id="os">
+      <option value="windows" selected>Windows</option>
+      <option value="mac">macOS</option>
+      <option value="linux">Linux</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="cpu">CPU</label>
+    <select id="cpu"></select>
+  </div>
+
+  <div class="field">
+    <label for="gpu">GPU</label>
+    <select id="gpu"></select>
+  </div>
+
+  <div class="field">
+    <label for="ram">RAM</label>
+    <select id="ram">
+      <option value="8">8 Go</option>
+      <option value="16" selected>16 Go</option>
+      <option value="32">32 Go</option>
+      <option value="64">64 Go</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="storage">Stockage</label>
+    <select id="storage">
+      <option value="hdd">HDD</option>
+      <option value="ssd" selected>SSD</option>
+      <option value="nvme">NVMe</option>
+    </select>
+  </div>
+
+  <div class="actions">
+    <button id="analyzeBtn" type="button">Analyser</button>
+    <button id="resetBtn" type="button">Réinitialiser</button>
+  </div>
+
+  <div id="statusBox" class="statusbox"></div>
+  <div id="results" class="results"></div>
+</section>
