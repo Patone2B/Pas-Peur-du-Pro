@@ -773,67 +773,20 @@ if (igLink) {
   });
 }
 
-  const view = document.getElementById("view");
+ // ====== Setup (injection dans la même page, sans changer l'URL) ======
 
-  function ensureCss(href, id) {
-    if (document.getElementById(id)) return;
-    const link = document.createElement("link");
-    link.id = id;
-    link.rel = "stylesheet";
-    link.href = href;
-    document.head.appendChild(link);
-  }
-
-  function ensureScript(src, id, onload) {
-    if (document.getElementById(id)) { if (onload) onload(); return; }
-    const s = document.createElement("script");
-    s.id = id;
-    s.src = src;
-    s.defer = true;
-    s.onload = onload || null;
-    document.body.appendChild(s);
-  }
-
-  async function loadFragment(file) {
-    const res = await fetch(file, { cache: "no-store" });
-    if (!res.ok) throw new Error("Impossible de charger " + file);
-    return res.text();
-  }
-
-  async function showSetup() {
-    // 1) CSS du module
-    ensureCss("setup.css", "setup-css");
-
-    // 2) Injecter le HTML
-    view.innerHTML = await loadFragment("setup.html");
-
-    // 3) Charger le JS et initialiser
-    ensureScript("setup.js", "setup-js", () => {
-      if (window.SetupAnalyzer && typeof window.SetupAnalyzer.init === "function") {
-        window.SetupAnalyzer.init();
-      }
-    });
-  }
-
-  // Navigation via hash
-  window.addEventListener("hashchange", () => {
-    if (location.hash === "#setup") showSetup();
-  });
-
-  // Si on arrive directement avec #setup
-  if (location.hash === "#setup") showSetup();
-
-  // clic sur bouton (optionnel)
+document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("openSetup");
-  if (btn) btn.addEventListener("click", (e) => {
-    // on laisse le hash faire le boulot
-  });
+  if (btn) btn.addEventListener("click", showSetup);
+});
 
-// ================== 6) Route #setup : injecter setup.html dans #view ==================
-async function loadFragment(file) {
-  const res = await fetch(file, { cache: "no-store" });
-  if (!res.ok) throw new Error("Impossible de charger " + file);
-  return res.text();
+function ensureCss(href, id) {
+  if (document.getElementById(id)) return;
+  const link = document.createElement("link");
+  link.id = id;
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.appendChild(link);
 }
 
 function ensureScript(src, id, onload) {
@@ -846,12 +799,23 @@ function ensureScript(src, id, onload) {
   document.body.appendChild(s);
 }
 
+async function loadFragment(file) {
+  const res = await fetch(file, { cache: "no-store" });
+  if (!res.ok) throw new Error("Impossible de charger " + file);
+  return res.text();
+}
+
 async function showSetup() {
   const view = document.getElementById("view");
   if (!view) return;
 
+  // charge le CSS du module (une seule fois)
+  ensureCss("setup.css", "setup-css");
+
+  // injecte le HTML du module
   view.innerHTML = await loadFragment("setup.html");
 
+  // charge le JS du module puis init
   ensureScript("setup.js", "setup-js", () => {
     if (window.SetupAnalyzer && typeof window.SetupAnalyzer.init === "function") {
       window.SetupAnalyzer.init();
@@ -859,7 +823,3 @@ async function showSetup() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("openSetup");
-  if (btn) btn.addEventListener("click", showSetup);
-});
