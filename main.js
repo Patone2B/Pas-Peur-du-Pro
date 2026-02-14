@@ -207,7 +207,7 @@ const quizDB = {
     {
       q: "Quelles options influencent principalement la taille finale du fichier ?",
       choices: ["Résolution et débit (bitrate)", "Durée du projet", "Type de piste audio"],
-      correct: 1,
+      correct: 0,
       explain: "💬 Plus la résolution et le bitrate sont élevés, plus le fichier est lourd."
     },
     {
@@ -217,7 +217,7 @@ const quizDB = {
         "Créer des montages",
         "Gérer les effets spéciaux"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Il encode/convertit les projets vers des fichiers vidéo diffusables."
     },
     {
@@ -227,7 +227,7 @@ const quizDB = {
         "Pour accélérer la lecture",
         "Pour ajouter des transitions"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Il libère Premiere Pro et gère plusieurs exports en file d’attente."
     },
     {
@@ -237,7 +237,7 @@ const quizDB = {
         "Supprimer les fichiers inutiles",
         "Rendre en haute qualité"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 La queue enchaîne des rendus sans intervention."
     },
     {
@@ -283,13 +283,13 @@ const quizDB = {
         "Pour sauvegarder la conversation",
         "Pour éteindre le GPU"
       ],
-      correct: 1,
+      correct: 0,
       explain: "💬 Éjecter libère la RAM et évite la saturation du système."
     },
     {
       q: "LM Studio est-il un logiciel gratuit et légal ?",
       choices: ["Oui", "Non", "Il est légal mais payant"],
-      correct: 1,
+      correct: 0,
       explain: "💬 LM Studio est gratuit et légal. Il permet d’installer une IA en local gratuitement. Les modèles proposés sont également gratuits et conformes à leurs licences."
     }
   ],
