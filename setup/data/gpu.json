@@ -1,0 +1,11 @@
+[
+  { "name": "Intel UHD (iGPU)", "tier": 1 },
+  { "name": "NVIDIA GeForce GTX 1050 Ti", "tier": 2 },
+  { "name": "NVIDIA GeForce GTX 1650", "tier": 2 },
+  { "name": "NVIDIA GeForce RTX 2060", "tier": 3 },
+  { "name": "NVIDIA GeForce RTX 3060", "tier": 4 },
+  { "name": "NVIDIA GeForce RTX 4060", "tier": 5 },
+  { "name": "AMD Radeon RX 580", "tier": 2 },
+  { "name": "AMD Radeon RX 6600", "tier": 4 },
+  { "name": "Apple GPU (M1/M2)", "tier": 4 }
+]
