@@ -758,3 +758,17 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+// ===== Instagram Logo Link (JS) =====
+// Optionnel : si tu veux définir l’URL en JS (plutôt que dans le HTML).
+// Dans ce cas, mets href="#" dans le HTML.
+
+const instagramProfileUrl = "https://www.instagram.com/paspeurdupro?igsh=NjB4dzFjcm9jeWU1&utm_source=qr";
+
+const igLink = document.querySelector(".ig-link");
+if (igLink) {
+  igLink.href = instagramProfileUrl;
+  igLink.addEventListener("click", (e) => {
+    // ouvre dans un nouvel onglet (déjà géré par target="_blank", mais gardé si tu veux forcer)
+    // window.open(instagramProfileUrl, "_blank", "noopener,noreferrer");
+  });
+}
