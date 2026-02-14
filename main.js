@@ -865,3 +865,36 @@ if (igLink) {
   window.addEventListener("hashchange", loadSetupIntoView);
   document.addEventListener("DOMContentLoaded", loadSetupIntoView);
 })();
+// ================== Charger Setup quand #setup ==================
+window.addEventListener("hashchange", loadSetup);
+document.addEventListener("DOMContentLoaded", loadSetup);
+
+async function loadSetup() {
+  if (location.hash !== "#setup") return;
+
+  const view = document.getElementById("view");
+  if (!view) return;
+
+  try {
+    const res = await fetch("setup.html");
+    const html = await res.text();
+    view.innerHTML = html;
+
+    // Charger setup.js si nécessaire
+    if (!window.SetupAnalyzer) {
+      const script = document.createElement("script");
+      script.src = "setup.js";
+      document.body.appendChild(script);
+      script.onload = () => {
+        if (window.SetupAnalyzer) {
+          window.SetupAnalyzer.init();
+        }
+      };
+    } else {
+      window.SetupAnalyzer.init();
+    }
+
+  } catch (err) {
+    view.innerHTML = "<p>Erreur lors du chargement du setup.</p>";
+  }
+}
