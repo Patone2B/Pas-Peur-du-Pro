@@ -1,0 +1,10 @@
+[
+  { "name": "Intel Core i5-8400", "tier": 2 },
+  { "name": "Intel Core i5-10400", "tier": 3 },
+  { "name": "Intel Core i7-10700K", "tier": 4 },
+  { "name": "AMD Ryzen 5 3600", "tier": 3 },
+  { "name": "AMD Ryzen 5 5600", "tier": 4 },
+  { "name": "AMD Ryzen 7 5800X", "tier": 5 },
+  { "name": "Apple M1", "tier": 4 },
+  { "name": "Apple M2", "tier": 5 }
+]
