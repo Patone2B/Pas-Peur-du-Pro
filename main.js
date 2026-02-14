@@ -772,7 +772,7 @@ if (igLink) {
     // window.open(instagramProfileUrl, "_blank", "noopener,noreferrer");
   });
 }
-<script>
+
   const view = document.getElementById("view");
 
   function ensureCss(href, id) {
@@ -828,7 +828,7 @@ if (igLink) {
   if (btn) btn.addEventListener("click", (e) => {
     // on laisse le hash faire le boulot
   });
-</script>
+
 // ================== 6) Route #setup : injecter setup.html dans #view ==================
 (function () {
   async function loadSetupIntoView() {
