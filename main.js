@@ -829,3 +829,39 @@ if (igLink) {
     // on laisse le hash faire le boulot
   });
 </script>
+// ================== 6) Route #setup : injecter setup.html dans #view ==================
+(function () {
+  async function loadSetupIntoView() {
+    if (location.hash !== "#setup") return;
+
+    // 1) Afficher la section où se trouve #view
+    showContent("Configuration_logiciel");
+
+    const view = document.getElementById("view");
+    if (!view) return;
+
+    try {
+      const res = await fetch("setup.html", { cache: "no-store" });
+      if (!res.ok) throw new Error("setup.html introuvable (" + res.status + ")");
+      const html = await res.text();
+      view.innerHTML = html;
+
+      // 2) Charger setup.js si pas déjà chargé, puis init
+      if (!window.SetupAnalyzer) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement("script");
+          s.src = "setup.js";
+          s.onload = resolve;
+          s.onerror = reject;
+          document.body.appendChild(s);
+        });
+      }
+      window.SetupAnalyzer && window.SetupAnalyzer.init();
+    } catch (e) {
+      view.innerHTML = `<p style="color:red;">Erreur Setup: ${e.message}</p>`;
+    }
+  }
+
+  window.addEventListener("hashchange", loadSetupIntoView);
+  document.addEventListener("DOMContentLoaded", loadSetupIntoView);
+})();
