@@ -830,71 +830,36 @@ if (igLink) {
   });
 
 // ================== 6) Route #setup : injecter setup.html dans #view ==================
-(function () {
-  async function loadSetupIntoView() {
-    if (location.hash !== "#setup") return;
+async function loadFragment(file) {
+  const res = await fetch(file, { cache: "no-store" });
+  if (!res.ok) throw new Error("Impossible de charger " + file);
+  return res.text();
+}
 
-    // 1) Afficher la section où se trouve #view
-    showContent("Configuration_logiciel");
+function ensureScript(src, id, onload) {
+  if (document.getElementById(id)) { if (onload) onload(); return; }
+  const s = document.createElement("script");
+  s.id = id;
+  s.src = src;
+  s.defer = true;
+  s.onload = onload || null;
+  document.body.appendChild(s);
+}
 
-    const view = document.getElementById("view");
-    if (!view) return;
-
-    try {
-      const res = await fetch("setup.html", { cache: "no-store" });
-      if (!res.ok) throw new Error("setup.html introuvable (" + res.status + ")");
-      const html = await res.text();
-      view.innerHTML = html;
-
-      // 2) Charger setup.js si pas déjà chargé, puis init
-      if (!window.SetupAnalyzer) {
-        await new Promise((resolve, reject) => {
-          const s = document.createElement("script");
-          s.src = "setup.js";
-          s.onload = resolve;
-          s.onerror = reject;
-          document.body.appendChild(s);
-        });
-      }
-      window.SetupAnalyzer && window.SetupAnalyzer.init();
-    } catch (e) {
-      view.innerHTML = `<p style="color:red;">Erreur Setup: ${e.message}</p>`;
-    }
-  }
-
-  window.addEventListener("hashchange", loadSetupIntoView);
-  document.addEventListener("DOMContentLoaded", loadSetupIntoView);
-})();
-// ================== Charger Setup quand #setup ==================
-window.addEventListener("hashchange", loadSetup);
-document.addEventListener("DOMContentLoaded", loadSetup);
-
-async function loadSetup() {
-  if (location.hash !== "#setup") return;
-
+async function showSetup() {
   const view = document.getElementById("view");
   if (!view) return;
 
-  try {
-    const res = await fetch("setup.html");
-    const html = await res.text();
-    view.innerHTML = html;
+  view.innerHTML = await loadFragment("setup.html");
 
-    // Charger setup.js si nécessaire
-    if (!window.SetupAnalyzer) {
-      const script = document.createElement("script");
-      script.src = "setup.js";
-      document.body.appendChild(script);
-      script.onload = () => {
-        if (window.SetupAnalyzer) {
-          window.SetupAnalyzer.init();
-        }
-      };
-    } else {
+  ensureScript("setup.js", "setup-js", () => {
+    if (window.SetupAnalyzer && typeof window.SetupAnalyzer.init === "function") {
       window.SetupAnalyzer.init();
     }
-
-  } catch (err) {
-    view.innerHTML = "<p>Erreur lors du chargement du setup.</p>";
-  }
+  });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("openSetup");
+  if (btn) btn.addEventListener("click", showSetup);
+});
