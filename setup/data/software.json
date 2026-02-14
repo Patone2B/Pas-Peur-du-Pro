@@ -1,0 +1,52 @@
+[
+  {
+    "id": "davinci_1080",
+    "title": "DaVinci Resolve (montage 1080p)",
+    "min": { "cpu": 3, "gpu": 3, "ram": 16, "ssd": true },
+    "rec": { "cpu": 4, "gpu": 4, "ram": 32, "ssd": true },
+    "tips": [
+      "Active les Proxys / Optimized Media si ⚠️",
+      "Utilise le cache (Smart/User) pour les effets"
+    ]
+  },
+  {
+    "id": "davinci_4k",
+    "title": "DaVinci Resolve (montage 4K)",
+    "min": { "cpu": 4, "gpu": 4, "ram": 32, "ssd": true },
+    "rec": { "cpu": 5, "gpu": 5, "ram": 64, "ssd": true },
+    "tips": [
+      "Proxys quasi obligatoires si machine moyenne",
+      "Attention aux effets NR, Fusion lourd"
+    ]
+  },
+  {
+    "id": "unreal_basic",
+    "title": "Unreal Engine (projets simples)",
+    "min": { "cpu": 3, "gpu": 3, "ram": 16, "ssd": true },
+    "rec": { "cpu": 4, "gpu": 4, "ram": 32, "ssd": true },
+    "tips": [
+      "Évite Lumen/Nanite si ⚠️",
+      "Ferme les applis en arrière-plan"
+    ]
+  },
+  {
+    "id": "unreal_lumen",
+    "title": "Unreal Engine (Lumen/Nanite)",
+    "min": { "cpu": 4, "gpu": 5, "ram": 32, "ssd": true },
+    "rec": { "cpu": 5, "gpu": 6, "ram": 64, "ssd": true },
+    "tips": [
+      "Prévois une bonne carte graphique",
+      "Surveille VRAM et shaders"
+    ]
+  },
+  {
+    "id": "blender_basic",
+    "title": "Blender (modélisation / rendu léger)",
+    "min": { "cpu": 3, "gpu": 2, "ram": 16, "ssd": false },
+    "rec": { "cpu": 4, "gpu": 4, "ram": 32, "ssd": true },
+    "tips": [
+      "Rendu : privilégie GPU si possible",
+      "Réduis subdivisions si ⚠️"
+    ]
+  }
+]
