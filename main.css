@@ -534,6 +534,57 @@ iframe {
   display: block;
 }
 
+/* ===== Instagram Logo Link (CSS) ===== */
+.ig-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 700;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  /* “Couleurs Instagram” en fond discret */
+  background: linear-gradient(135deg, rgba(245, 133, 41, 0.14), rgba(221, 42, 123, 0.14), rgba(129, 52, 175, 0.14), rgba(81, 91, 212, 0.14));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #fff; /* si ton site est clair, change en #111 */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.ig-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.ig-text {
+  line-height: 1;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.ig-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  background: linear-gradient(135deg, rgba(245, 133, 41, 0.22), rgba(221, 42, 123, 0.22), rgba(129, 52, 175, 0.22), rgba(81, 91, 212, 0.22));
+}
+
+.ig-link:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.ig-link:focus-visible {
+  outline: 2px solid rgba(245, 133, 41, 0.9);
+  outline-offset: 3px;
+}
 
 /* =========================
    🎨 CONTENT / PROSE EXTENSIONS
