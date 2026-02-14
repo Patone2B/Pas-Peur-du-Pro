@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PasPeurduPro — Analyse Setup</title>
+  <link rel="stylesheet" href="setup.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="title">🖥️ Analyse de configuration</h1>
+      <p class="subtitle">
+        Choisis ton CPU/GPU/RAM/stockage, et on te dit quels logiciels sont OK, limites, ou non recommandés.
+      </p>
+      <nav class="nav">
+        <a class="navlink" href="../index.html">← Accueil</a>
+        <a class="navlink" href="../page_lab.html">Lab</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card">
+      <h2 class="card-title">1) Ton setup</h2>
+
+      <div class="field">
+        <label for="os">Système</label>
+        <select id="os">
+          <option value="windows" selected>Windows</option>
+          <option value="mac">macOS</option>
+          <option value="linux">Linux</option>
+        </select>
+        <p class="help">Info : certains logiciels peuvent varier selon l’OS. Ici, c’est une estimation “usage débutant”.</p>
+      </div>
+
+      <div class="field">
+        <label for="cpu">CPU (processeur)</label>
+        <select id="cpu"></select>
+      </div>
+
+      <div class="field">
+        <label for="gpu">GPU (carte graphique)</label>
+        <select id="gpu"></select>
+      </div>
+
+      <div class="field">
+        <label for="ram">RAM</label>
+        <select id="ram">
+          <option value="8">8 Go</option>
+          <option value="16" selected>16 Go</option>
+          <option value="32">32 Go</option>
+          <option value="64">64 Go</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="storage">Stockage</label>
+        <select id="storage">
+          <option value="hdd">HDD (disque dur)</option>
+          <option value="ssd" selected>SSD</option>
+          <option value="nvme">NVMe</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button id="analyzeBtn" class="btn primary" type="button">Analyser</button>
+        <button id="resetBtn" class="btn" type="button">Réinitialiser</button>
+      </div>
+
+      <div class="note">
+        <strong>Astuce :</strong> commence avec peu de composants, puis ajoute-en. Le système restera stable.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card-title">2) Résultats</h2>
+      <div id="statusBox" class="statusbox hidden"></div>
+      <div id="results" class="results"></div>
+
+      <p class="legend">
+        <span class="pill ok">✅ OK</span>
+        <span class="pill warn">⚠️ Limite</span>
+        <span class="pill bad">❌ Pas recommandé</span>
+        <span class="muted">— estimation “pratique”, avec conseils d’optimisation.</span>
+      </p>
+    </section>
+  </main>
+
+  <script src="setup.js" defer></script>
+</body>
+</html>
