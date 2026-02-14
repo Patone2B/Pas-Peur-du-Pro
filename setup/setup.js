@@ -1,42 +1,78 @@
+// SetupAnalyzer — version autonome (sans JSON)
+// Tu peux étendre CPU_DB / GPU_DB / SOFTWARE quand tu veux.
+
 window.SetupAnalyzer = (function () {
-  const PATHS = {
-    cpu: "setup/data/cpu.json",
-    gpu: "setup/data/gpu.json",
-    software: "setup/data/software.json",
-  };
+  const CPU_DB = [
+    { name: "Intel Core i5-8400", tier: 2 },
+    { name: "Intel Core i5-10400", tier: 3 },
+    { name: "Intel Core i7-10700K", tier: 4 },
+    { name: "AMD Ryzen 5 3600", tier: 3 },
+    { name: "AMD Ryzen 5 5600", tier: 4 },
+    { name: "AMD Ryzen 7 5800X", tier: 5 },
+    { name: "Apple M1", tier: 4 },
+    { name: "Apple M2", tier: 5 }
+  ];
 
-  let CPU_DB = [];
-  let GPU_DB = [];
-  let SOFTWARE = [];
-  let els = null;
+  const GPU_DB = [
+    { name: "Intel UHD (iGPU)", tier: 1 },
+    { name: "NVIDIA GeForce GTX 1050 Ti", tier: 2 },
+    { name: "NVIDIA GeForce GTX 1650", tier: 2 },
+    { name: "NVIDIA GeForce RTX 2060", tier: 3 },
+    { name: "NVIDIA GeForce RTX 3060", tier: 4 },
+    { name: "NVIDIA GeForce RTX 4060", tier: 5 },
+    { name: "AMD Radeon RX 580", tier: 2 },
+    { name: "AMD Radeon RX 6600", tier: 4 },
+    { name: "Apple GPU (M1/M2)", tier: 4 }
+  ];
 
-  function $(id) { return document.getElementById(id); }
+  const SOFTWARE = [
+    {
+      title: "DaVinci Resolve (montage 1080p)",
+      min: { cpu: 3, gpu: 3, ram: 16, ssd: true },
+      rec: { cpu: 4, gpu: 4, ram: 32, ssd: true },
+      tips: ["Active Proxys / Optimized Media", "Active le cache pour les effets"]
+    },
+    {
+      title: "DaVinci Resolve (montage 4K)",
+      min: { cpu: 4, gpu: 4, ram: 32, ssd: true },
+      rec: { cpu: 5, gpu: 5, ram: 64, ssd: true },
+      tips: ["Proxys quasi obligatoires", "Attention NR + Fusion (très lourd)"]
+    },
+    {
+      title: "Unreal Engine (projets simples)",
+      min: { cpu: 3, gpu: 3, ram: 16, ssd: true },
+      rec: { cpu: 4, gpu: 4, ram: 32, ssd: true },
+      tips: ["Évite Lumen/Nanite si ⚠️", "Ferme les applis en arrière-plan"]
+    },
+    {
+      title: "Unreal Engine (Lumen / Nanite)",
+      min: { cpu: 4, gpu: 5, ram: 32, ssd: true },
+      rec: { cpu: 5, gpu: 6, ram: 64, ssd: true },
+      tips: ["Prévois un GPU solide", "Surveille VRAM + compilation shaders"]
+    },
+    {
+      title: "Blender (modélisation / rendu léger)",
+      min: { cpu: 3, gpu: 2, ram: 16, ssd: false },
+      rec: { cpu: 4, gpu: 4, ram: 32, ssd: true },
+      tips: ["Réduis subdivisions si ⚠️", "Rendu : privilégie GPU si possible"]
+    }
+  ];
 
-  async function loadJson(path) {
-    const res = await fetch(path, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Impossible de charger ${path} (${res.status})`);
-    return res.json();
-  }
+  function $(id){ return document.getElementById(id); }
+  function byName(db, name){ return db.find(x => x.name === name) || null; }
+  function hasSSD(v){ return v === "ssd" || v === "nvme"; }
 
-  function populateSelect(selectEl, items) {
+  function populateSelect(selectEl, items){
     selectEl.innerHTML = "";
-    for (const item of items) {
+    items.forEach(item => {
       const opt = document.createElement("option");
       opt.value = item.name;
       opt.textContent = item.name;
       selectEl.appendChild(opt);
-    }
+    });
   }
 
-  function storageIsSSD(storage) {
-    return storage === "ssd" || storage === "nvme";
-  }
-
-  function byName(db, name) {
-    return db.find(x => x.name === name) || null;
-  }
-
-  function evaluate(sw, cfg) {
+  function evaluate(sw, cfg){
     const fail = [];
     const warn = [];
 
@@ -49,83 +85,82 @@ window.SetupAnalyzer = (function () {
     if (cfg.ram < sw.min.ram) fail.push(`RAM < ${sw.min.ram} Go`);
     else if (cfg.ram < sw.rec.ram) warn.push(`RAM conseillée : ${sw.rec.ram} Go`);
 
-    if (sw.min.ssd && !cfg.hasSSD) fail.push("SSD recommandé/nécessaire");
-    else if (sw.rec.ssd && !cfg.hasSSD) warn.push("SSD conseillé");
+    if (sw.min.ssd && !cfg.ssd) fail.push("SSD recommandé/nécessaire");
+    else if (sw.rec.ssd && !cfg.ssd) warn.push("SSD conseillé");
 
-    if (fail.length) return { status: "❌", label: "Pas recommandé", reasons: fail, tips: sw.tips || [] };
-    if (warn.length) return { status: "⚠️", label: "Limite", reasons: warn, tips: sw.tips || [] };
-    return { status: "✅", label: "OK", reasons: ["Configuration confortable"], tips: sw.tips || [] };
+    if (fail.length) return { status:"❌", label:"Pas recommandé", reasons: fail, tips: sw.tips };
+    if (warn.length) return { status:"⚠️", label:"Limite", reasons: warn, tips: sw.tips };
+    return { status:"✅", label:"OK", reasons:["Configuration confortable"], tips: sw.tips };
   }
 
-  function renderResults(cfg) {
-    els.results.innerHTML = "";
-    for (const sw of SOFTWARE) {
+  function renderResults(resultsEl, cfg){
+    resultsEl.innerHTML = "";
+    SOFTWARE.forEach(sw => {
       const ev = evaluate(sw, cfg);
       const div = document.createElement("div");
-      div.className = "result-card";
+      div.className = "result";
       div.innerHTML = `
-        <div class="topline">
-          <div>
-            <div class="software-title">${ev.status} ${sw.title}</div>
-            <div class="small muted">${ev.label}</div>
-          </div>
-          <div class="meta">CPU ${cfg.cpuTier} • GPU ${cfg.gpuTier} • ${cfg.ram} Go</div>
+        <div class="result__top">
+          <div class="result__title">${ev.status} ${sw.title}</div>
+          <div class="badge">CPU ${cfg.cpuTier} • GPU ${cfg.gpuTier} • ${cfg.ram} Go</div>
         </div>
-        <ul class="small" style="margin:10px 0 0; padding-left:18px;">
-          ${ev.reasons.map(r => `<li>${r}</li>`).join("")}
-        </ul>
+
+        <div class="small" style="margin-top:10px;">
+          <strong>${ev.label}</strong>
+          <ul>
+            ${ev.reasons.map(r => `<li>${r}</li>`).join("")}
+          </ul>
+        </div>
+
+        <div class="small" style="margin-top:10px;">
+          <strong>Conseils :</strong>
+          <ul>
+            ${ev.tips.map(t => `<li>${t}</li>`).join("")}
+          </ul>
+        </div>
       `;
-      els.results.appendChild(div);
-    }
+      resultsEl.appendChild(div);
+    });
   }
 
-  function getConfigFromUI() {
-    const cpu = byName(CPU_DB, els.cpu.value);
-    const gpu = byName(GPU_DB, els.gpu.value);
-    return {
-      cpuTier: cpu ? cpu.tier : 1,
-      gpuTier: gpu ? gpu.tier : 1,
-      ram: Number(els.ram.value),
-      hasSSD: storageIsSSD(els.storage.value),
-    };
-  }
+  function init(){
+    // Ces éléments n’existent que quand setup.html est injecté
+    const cpuSel = $("cpu");
+    const gpuSel = $("gpu");
+    const ramSel = $("ram");
+    const storageSel = $("storage");
+    const statusBox = $("statusBox");
+    const resultsEl = $("results");
+    const analyzeBtn = $("analyzeBtn");
+    const resetBtn = $("resetBtn");
 
-  async function init() {
-    // récupérer les éléments APRÈS injection du fragment
-    els = {
-      cpu: $("cpu"),
-      gpu: $("gpu"),
-      ram: $("ram"),
-      storage: $("storage"),
-      analyzeBtn: $("analyzeBtn"),
-      resetBtn: $("resetBtn"),
-      results: $("results"),
-      statusBox: $("statusBox"),
-    };
+    if (!cpuSel || !gpuSel || !resultsEl || !analyzeBtn) return;
 
-    if (!els.cpu || !els.gpu) return; // si le module n'est pas affiché
+    populateSelect(cpuSel, CPU_DB);
+    populateSelect(gpuSel, GPU_DB);
 
-    els.statusBox.textContent = "Chargement...";
-    CPU_DB = await loadJson(PATHS.cpu);
-    GPU_DB = await loadJson(PATHS.gpu);
-    SOFTWARE = await loadJson(PATHS.software);
+    statusBox.textContent = "Choisis ta config puis clique “Analyser”.";
 
-    populateSelect(els.cpu, CPU_DB);
-    populateSelect(els.gpu, GPU_DB);
+    analyzeBtn.onclick = () => {
+      const cpu = byName(CPU_DB, cpuSel.value);
+      const gpu = byName(GPU_DB, gpuSel.value);
 
-    els.statusBox.textContent = "Choisis ta config puis clique “Analyser”.";
-    els.results.innerHTML = "";
+      const cfg = {
+        cpuTier: cpu ? cpu.tier : 1,
+        gpuTier: gpu ? gpu.tier : 1,
+        ram: Number(ramSel.value),
+        ssd: hasSSD(storageSel.value)
+      };
 
-    els.analyzeBtn.onclick = () => {
-      els.statusBox.textContent = "";
-      renderResults(getConfigFromUI());
+      statusBox.textContent = "";
+      renderResults(resultsEl, cfg);
     };
 
-    els.resetBtn.onclick = () => {
-      els.ram.value = "16";
-      els.storage.value = "ssd";
-      els.results.innerHTML = "";
-      els.statusBox.textContent = "Réinitialisé.";
+    resetBtn.onclick = () => {
+      ramSel.value = "16";
+      storageSel.value = "ssd";
+      resultsEl.innerHTML = "";
+      statusBox.textContent = "Réinitialisé. Choisis ta config puis clique “Analyser”.";
     };
   }
 
