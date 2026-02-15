@@ -154,3 +154,111 @@
 
 /* si tu utilises hidden côté JS */
 .setup-scope .hidden{ display: none !important; }
+/* =========================
+   SETUP (injecté dans #view)
+   Style épuré + propre
+   ========================= */
+
+#view { margin-top: 14px; }
+
+/* Carte */
+#view .card{
+  max-width: 820px;
+  margin: 14px auto 0;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 18px 50px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+}
+
+/* Titres */
+#view .card-title{
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: .2px;
+}
+#view .subtitle{
+  margin: 6px 0 16px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.45;
+}
+
+/* Champs */
+#view .field{
+  margin: 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#view .field label{
+  font-size: 13px;
+  color: rgba(255,255,255,.78);
+}
+#view .field .help{
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.56);
+  line-height: 1.35;
+}
+
+/* Select */
+#view select{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  background: rgba(10,14,25,.65);
+  color: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.14);
+  outline: none;
+}
+#view select:focus{
+  border-color: rgba(120,170,255,.75);
+  box-shadow: 0 0 0 4px rgba(120,170,255,.15);
+}
+
+/* Actions (force override sur le button global de main.css) */
+#view .actions{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* IMPORTANT: on cible aussi "button" pour écraser main.css */
+#view .actions .btn,
+#view .actions button{
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  cursor: pointer !important;
+  font-weight: 700 !important;
+  background: rgba(255,255,255,.06) !important;
+  color: rgba(255,255,255,.92) !important;
+  box-shadow: none !important;
+}
+
+#view .actions .btn:hover,
+#view .actions button:hover{
+  background: rgba(255,255,255,.09) !important;
+}
+
+#view .actions .btn.primary{
+  flex: 1;
+  border-color: transparent !important;
+  background: linear-gradient(135deg, rgba(90,140,255,.95), rgba(60,200,255,.85)) !important;
+  color: #07101d !important;
+}
+#view .actions .btn.primary:hover{
+  filter: brightness(1.04);
+}
+
+/* Petite note */
+#view .note{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.16);
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.82);
+}
