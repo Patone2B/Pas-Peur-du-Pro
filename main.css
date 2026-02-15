@@ -924,3 +924,110 @@ iframe {
   overflow: auto;
 }
 
+/* =========================
+   SETUP
+   ========================= */
+#setup .setup-card{
+  max-width: 980px;
+  margin: 14px auto 0;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 18px 50px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+}
+
+#setup .setup-head h2{ margin:0 0 6px; font-size:22px; }
+#setup .setup-sub{ margin:0 0 16px; color:rgba(255,255,255,.72); line-height:1.45; }
+
+#setup .setup-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 720px){
+  #setup .setup-form{ grid-template-columns: 1fr; }
+}
+
+#setup .field{ display:flex; flex-direction:column; gap:8px; }
+#setup label{ font-size:13px; color:rgba(255,255,255,.78); }
+
+#setup select{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  background: rgba(10,14,25,.65);
+  color: rgba(255,255,255,.92);
+  border: 1px solid rgba(255,255,255,.14);
+  outline:none;
+}
+#setup select:focus{
+  border-color: rgba(120,170,255,.75);
+  box-shadow: 0 0 0 4px rgba(120,170,255,.15);
+}
+
+#setup .actions{
+  grid-column: 1 / -1;
+  display:flex;
+  gap:10px;
+  margin-top:6px;
+}
+
+/* force override si ton main.css stylise button globalement */
+#setup .actions .btn,
+#setup .actions button{
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  cursor: pointer !important;
+  font-weight: 800 !important;
+  background: rgba(255,255,255,.06) !important;
+  color: rgba(255,255,255,.92) !important;
+  box-shadow: none !important;
+}
+#setup .actions .btn.primary{
+  flex:1;
+  border-color: transparent !important;
+  background: linear-gradient(135deg, rgba(90,140,255,.95), rgba(60,200,255,.85)) !important;
+  color:#07101d !important;
+}
+
+#setup .statusbox{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:14px;
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+#setup .legend{ margin:14px 0 6px; color:rgba(255,255,255,.7); }
+#setup .pill{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  margin-right:8px;
+}
+
+#setup .results{ margin-top:12px; display:grid; gap:10px; }
+#setup .result-card{
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+}
+#setup .result-title{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; margin-bottom:6px;
+}
+#setup .result-title strong{ font-size:15px; }
+#setup .badge{
+  padding:4px 10px; border-radius:999px;
+  font-weight: 900;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+}
+#setup .muted{ color: rgba(255,255,255,.62); font-size:13px; line-height:1.4; }
+#setup .hidden{ display:none !important; }
