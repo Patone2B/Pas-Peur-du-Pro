@@ -802,7 +802,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ================= GPU ================= */
 
   const GPU_LIST = [
-   const GPU_LIST = [
   // ===== Intégrés =====
   { id:"igpu", label:"GPU intégré (Intel/AMD) ~1 Go", score:25, vram:1 },
   { id:"applegpu", label:"Apple GPU (M1/M2/M3) (mémoire unifiée ~4 Go)", score:55, vram:4 },
