@@ -1,86 +1,62 @@
-<section class="setup">
-  <header class="setup__header">
-    <div class="setup__title">
-      <h2>🖥️ Analyse de configuration</h2>
-      <p class="setup__subtitle">
-        Tu entres ta config et je te dis quels logiciels tournent : <strong>OK</strong>, <strong>Limite</strong>, ou <strong>Pas recommandé</strong>.
-      </p>
+<section class="setup-card" aria-labelledby="setup-title">
+  <div class="setup-head">
+    <h2 id="setup-title">1) Ton setup</h2>
+    <p class="setup-sub">
+      Renseigne ta config : on te dira <strong>OK</strong>, <strong>Limite</strong> ou <strong>Pas recommandé</strong>.
+    </p>
+  </div>
+
+  <form class="setup-form" id="setupForm">
+    <div class="field">
+      <label for="systeme">Système</label>
+      <select id="systeme" name="systeme">
+        <option>Windows</option>
+        <option>macOS</option>
+        <option>Linux</option>
+      </select>
     </div>
 
-    <ul class="setup__bullets">
-      <li>Résultat clair : ✅ / ⚠️ / ❌</li>
-      <li>Conseils d’optimisation concrets (proxy, cache, réglages)</li>
-      <li>Base de composants réelle (CPU/GPU) extensible</li>
-    </ul>
-  </header>
+    <div class="field">
+      <label for="cpu">CPU (processeur)</label>
+      <select id="cpu" name="cpu"></select>
+    </div>
 
-  <div class="setup__grid">
-    <section class="card">
-      <h3>1) Ton setup</h3>
+    <div class="field">
+      <label for="gpu">GPU (carte graphique)</label>
+      <select id="gpu" name="gpu"></select>
+    </div>
 
-      <div class="field">
-        <label for="os">Système</label>
-        <select id="os">
-          <option value="windows" selected>Windows</option>
-          <option value="mac">macOS</option>
-          <option value="linux">Linux</option>
-        </select>
-        <p class="help">Estimation pratique (débutant-friendly). Certains logiciels dépendent aussi des drivers.</p>
-      </div>
+    <div class="field">
+      <label for="ram">RAM</label>
+      <select id="ram" name="ram">
+        <option>8 Go</option>
+        <option selected>16 Go</option>
+        <option>32 Go</option>
+        <option>64 Go</option>
+      </select>
+    </div>
 
-      <div class="field">
-        <label for="cpu">CPU (processeur)</label>
-        <select id="cpu"></select>
-      </div>
+    <div class="field">
+      <label for="storage">Stockage</label>
+      <select id="storage" name="storage">
+        <option>HDD</option>
+        <option selected>SSD</option>
+        <option>NVMe</option>
+      </select>
+    </div>
 
-      <div class="field">
-        <label for="gpu">GPU (carte graphique)</label>
-        <select id="gpu"></select>
-      </div>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="btnAnalyze">Analyser</button>
+      <button type="button" class="btn btn-ghost" id="btnReset">Réinitialiser</button>
+    </div>
 
-      <div class="field">
-        <label for="ram">RAM</label>
-        <select id="ram">
-          <option value="8">8 Go</option>
-          <option value="16" selected>16 Go</option>
-          <option value="32">32 Go</option>
-          <option value="64">64 Go</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="storage">Stockage</label>
-        <select id="storage">
-          <option value="hdd">HDD</option>
-          <option value="ssd" selected>SSD</option>
-          <option value="nvme">NVMe</option>
-        </select>
-      </div>
-
-      <div class="actions">
-        <button id="analyzeBtn" type="button" class="btn btn--primary">Analyser</button>
-        <button id="resetBtn" type="button" class="btn">Réinitialiser</button>
-      </div>
-
-      <div class="note">
-        <strong>Note :</strong>
-        <ul>
-          <li>✅ = usage standard fluide</li>
-          <li>⚠️ = ça tourne, mais il faudra optimiser</li>
-          <li>❌ = pas recommandé pour cet usage</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="card">
-      <h3>2) Résultats</h3>
-
-      <div id="statusBox" class="status"></div>
-      <div id="results" class="results"></div>
-
-      <div class="footerTip">
-        <p><strong>Astuce :</strong> si tu es en ⚠️, les “Conseils” te donnent les réglages à activer pour sauver la perf.</p>
-      </div>
-    </section>
-  </div>
+    <div class="setup-note" role="note">
+      <div class="note-title">Note</div>
+      <ul class="note-list">
+        <li><span class="chip ok">✅</span> usage standard fluide</li>
+        <li><span class="chip warn">⚠️</span> ça tourne, mais il faudra optimiser</li>
+        <li><span class="chip bad">❌</span> pas recommandé pour cet usage</li>
+      </ul>
+    </div>
+  </form>
 </section>
