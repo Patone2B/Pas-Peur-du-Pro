@@ -772,54 +772,174 @@ if (igLink) {
     // window.open(instagramProfileUrl, "_blank", "noopener,noreferrer");
   });
 }
+/* =========================================
+   SETUP ANALYSE COMPLET
+   ========================================= */
 
- // ====== Setup (injection dans la même page, sans changer l'URL) ======
+/* =============================
+   LISTES CPU
+   score = puissance relative
+   ============================= */
+const CPU_LIST = [
+  { id:"m1", label:"Apple M1", score:65 },
+  { id:"m2", label:"Apple M2", score:72 },
+  { id:"m3", label:"Apple M3", score:80 },
 
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("openSetup");
-  if (btn) btn.addEventListener("click", showSetup);
-});
+  { id:"i5_8400", label:"Intel i5-8400", score:52 },
+  { id:"i7_8700", label:"Intel i7-8700", score:60 },
+  { id:"i5_10400", label:"Intel i5-10400", score:62 },
+  { id:"i7_10700", label:"Intel i7-10700", score:72 },
+  { id:"i5_12400", label:"Intel i5-12400", score:74 },
+  { id:"i7_12700", label:"Intel i7-12700", score:86 },
+  { id:"i5_13400", label:"Intel i5-13400", score:82 },
+  { id:"i7_13700", label:"Intel i7-13700", score:92 },
+  { id:"i9_13900", label:"Intel i9-13900", score:98 },
+  { id:"i9_14900", label:"Intel i9-14900", score:99 },
 
-function ensureCss(href, id) {
-  if (document.getElementById(id)) return;
-  const link = document.createElement("link");
-  link.id = id;
-  link.rel = "stylesheet";
-  link.href = href;
-  document.head.appendChild(link);
-}
+  { id:"r5_3600", label:"Ryzen 5 3600", score:70 },
+  { id:"r7_3700x", label:"Ryzen 7 3700X", score:78 },
+  { id:"r5_5600", label:"Ryzen 5 5600", score:80 },
+  { id:"r7_5800x", label:"Ryzen 7 5800X", score:88 },
+  { id:"r5_7600", label:"Ryzen 5 7600", score:86 },
+  { id:"r7_7700", label:"Ryzen 7 7700", score:92 },
+  { id:"r9_7900", label:"Ryzen 9 7900", score:96 }
+];
 
-function ensureScript(src, id, onload) {
-  if (document.getElementById(id)) { if (onload) onload(); return; }
-  const s = document.createElement("script");
-  s.id = id;
-  s.src = src;
-  s.defer = true;
-  s.onload = onload || null;
-  document.body.appendChild(s);
-}
+/* =============================
+   LISTES GPU
+   score = puissance relative
+   vram = mémoire vidéo
+   ============================= */
+const GPU_LIST = [
+  { id:"igpu", label:"GPU intégré", score:25, vram:1 },
+  { id:"applegpu", label:"Apple GPU (M1/M2/M3)", score:55, vram:4 },
 
-async function loadFragment(file) {
-  const res = await fetch(file, { cache: "no-store" });
-  if (!res.ok) throw new Error("Impossible de charger " + file);
-  return res.text();
-}
+  { id:"gtx1060", label:"GTX 1060 (6 Go)", score:45, vram:6 },
+  { id:"gtx1660", label:"GTX 1660 (6 Go)", score:52, vram:6 },
 
-async function showSetup() {
-  const view = document.getElementById("view");
-  if (!view) return;
+  { id:"rtx2060", label:"RTX 2060 (6 Go)", score:60, vram:6 },
+  { id:"rtx3060", label:"RTX 3060 (12 Go)", score:70, vram:12 },
+  { id:"rtx4060", label:"RTX 4060 (8 Go)", score:76, vram:8 },
+  { id:"rtx4070", label:"RTX 4070 (12 Go)", score:86, vram:12 },
+  { id:"rtx4080", label:"RTX 4080 (16 Go)", score:95, vram:16 },
 
-  // charge le CSS du module (une seule fois)
-  ensureCss("setup.css", "setup-css");
+  { id:"rx580", label:"RX 580 (8 Go)", score:46, vram:8 },
+  { id:"rx6600", label:"RX 6600 (8 Go)", score:66, vram:8 },
+  { id:"rx6700xt", label:"RX 6700 XT (12 Go)", score:78, vram:12 },
+  { id:"rx7800xt", label:"RX 7800 XT (16 Go)", score:90, vram:16 }
+];
 
-  // injecte le HTML du module
-  view.innerHTML = await loadFragment("setup.html");
+/* =============================
+   LOGICIELS
+   ============================= */
+const SOFTWARE = [
+  { name:"Fusion 360", min:{cpu:45,gpu:25,ram:8,vram:1,ssd:false}, rec:{cpu:70,gpu:40,ram:16,vram:2,ssd:false} },
+  { name:"Premiere Pro", min:{cpu:55,gpu:45,ram:16,vram:4,ssd:true}, rec:{cpu:80,gpu:70,ram:32,vram:8,ssd:true} },
+  { name:"LM Studio", min:{cpu:50,gpu:40,ram:16,vram:6,ssd:false}, rec:{cpu:75,gpu:75,ram:32,vram:12,ssd:false} },
+  { name:"DaVinci Resolve", min:{cpu:60,gpu:55,ram:16,vram:4,ssd:true}, rec:{cpu:85,gpu:80,ram:32,vram:8,ssd:true} },
+  { name:"Dreamweaver", min:{cpu:25,gpu:10,ram:4,vram:0,ssd:false}, rec:{cpu:40,gpu:15,ram:8,vram:0,ssd:false} },
+  { name:"Media Encoder", min:{cpu:55,gpu:45,ram:16,vram:4,ssd:true}, rec:{cpu:80,gpu:70,ram:32,vram:8,ssd:true} },
+  { name:"Unreal Engine 5", min:{cpu:65,gpu:60,ram:16,vram:6,ssd:true}, rec:{cpu:85,gpu:75,ram:32,vram:8,ssd:true} },
+  { name:"Blender", min:{cpu:45,gpu:25,ram:8,vram:2,ssd:false}, rec:{cpu:75,gpu:60,ram:16,vram:6,ssd:false} },
+  { name:"Photoshop", min:{cpu:45,gpu:25,ram:8,vram:2,ssd:false}, rec:{cpu:65,gpu:45,ram:16,vram:4,ssd:false} },
+  { name:"After Effects", min:{cpu:60,gpu:45,ram:16,vram:4,ssd:true}, rec:{cpu:85,gpu:70,ram:32,vram:8,ssd:true} },
+  { name:"Unity", min:{cpu:45,gpu:25,ram:8,vram:2,ssd:false}, rec:{cpu:70,gpu:55,ram:16,vram:4,ssd:false} }
+];
 
-  // charge le JS du module puis init
-  ensureScript("setup.js", "setup-js", () => {
-    if (window.SetupAnalyzer && typeof window.SetupAnalyzer.init === "function") {
-      window.SetupAnalyzer.init();
-    }
+/* =============================
+   INITIALISATION
+   ============================= */
+let setupInitialized = false;
+
+function initSetupOnce() {
+  if (setupInitialized) return;
+  setupInitialized = true;
+
+  const cpuSelect = document.getElementById("cpu");
+  const gpuSelect = document.getElementById("gpu");
+  const ramSelect = document.getElementById("ram");
+  const storageSelect = document.getElementById("storage");
+  const analyzeBtn = document.getElementById("analyzeBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const results = document.getElementById("results");
+  const statusBox = document.getElementById("statusBox");
+
+  fillSelect(cpuSelect, CPU_LIST);
+  fillSelect(gpuSelect, GPU_LIST);
+
+  analyzeBtn.addEventListener("click", () => {
+
+    const cpu = CPU_LIST.find(c => c.id === cpuSelect.value);
+    const gpu = GPU_LIST.find(g => g.id === gpuSelect.value);
+    const ram = Number(ramSelect.value);
+    const storage = storageSelect.value;
+
+    statusBox.classList.remove("hidden");
+    statusBox.textContent = "Analyse terminée.";
+
+    results.innerHTML = SOFTWARE.map(sw =>
+      evaluateSoftware(sw, cpu, gpu, ram, storage)
+    ).join("");
+  });
+
+  resetBtn.addEventListener("click", () => {
+    cpuSelect.selectedIndex = 0;
+    gpuSelect.selectedIndex = 0;
+    ramSelect.value = "16";
+    storageSelect.value = "ssd";
+    results.innerHTML = "";
+    statusBox.classList.add("hidden");
   });
 }
 
+/* =============================
+   FONCTIONS UTILITAIRES
+   ============================= */
+function fillSelect(select, list){
+  select.innerHTML = "";
+  list.forEach(item => {
+    const option = document.createElement("option");
+    option.value = item.id;
+    option.textContent = item.label;
+    select.appendChild(option);
+  });
+}
+
+function evaluateSoftware(sw, cpu, gpu, ram, storage){
+
+  const ssdOk = storage !== "hdd";
+
+  const meetsMin =
+    cpu.score >= sw.min.cpu &&
+    gpu.score >= sw.min.gpu &&
+    ram >= sw.min.ram &&
+    gpu.vram >= sw.min.vram &&
+    (!sw.min.ssd || ssdOk);
+
+  const meetsRec =
+    cpu.score >= sw.rec.cpu &&
+    gpu.score >= sw.rec.gpu &&
+    ram >= sw.rec.ram &&
+    gpu.vram >= sw.rec.vram &&
+    (!sw.rec.ssd || ssdOk);
+
+  let verdict = "❌ Non recommandé";
+  let badge = "bad";
+
+  if (meetsRec){
+    verdict = "✅ OK";
+    badge = "ok";
+  } else if (meetsMin){
+    verdict = "⚠️ Limite";
+    badge = "warn";
+  }
+
+  return `
+    <div class="result-card">
+      <div class="result-title">
+        <strong>${sw.name}</strong>
+        <span class="badge ${badge}">${verdict}</span>
+      </div>
+    </div>
+  `;
+}
