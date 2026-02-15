@@ -871,7 +871,7 @@ document.addEventListener("DOMContentLoaded", () => {
   { id:"radeon_pro_w6800_32", label:"AMD Radeon Pro W6800 (32 Go) [Pro]", score:90, vram:32 }
 ];
 
-  ];
+
 
   /* ================= LOGICIELS ================= */
 
