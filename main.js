@@ -787,17 +787,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= CPU ================= */
 
-  const CPU_LIST = [
-    { id:"i5_10400", label:"Intel i5-10400", score:62 },
-    { id:"i7_10700", label:"Intel i7-10700", score:72 },
-    { id:"i5_12400", label:"Intel i5-12400", score:74 },
-    { id:"i7_13700", label:"Intel i7-13700", score:92 },
-    { id:"r5_3600", label:"Ryzen 5 3600", score:70 },
-    { id:"r7_5800x", label:"Ryzen 7 5800X", score:88 },
-    { id:"m1", label:"Apple M1", score:65 },
-    { id:"m2", label:"Apple M2", score:72 },
-    { id:"m3", label:"Apple M3", score:80 }
-  ];
+ const CPU_LIST = [
+
+  // Intel Celeron / Pentium (très bas de gamme)
+  { id:"celeron_g5900", label:"Intel Celeron G5900", score:20 },
+  { id:"pentium_gold_g7400", label:"Intel Pentium Gold G7400", score:30 },
+
+  // Intel Core i3
+  { id:"i3_10100", label:"Intel i3-10100", score:55 },
+  { id:"i3_12100", label:"Intel i3-12100", score:68 },
+  { id:"i3_13100", label:"Intel i3-13100", score:72 },
+
+  // Intel Core i5
+  { id:"i5_10400", label:"Intel i5-10400", score:66 },
+  { id:"i5_11400", label:"Intel i5-11400", score:75 },
+  { id:"i5_12400", label:"Intel i5-12400", score:88 },
+  { id:"i5_13400", label:"Intel i5-13400", score:100 },
+  { id:"i5_14600k", label:"Intel i5-14600K", score:112 },
+
+  // Intel Core i7
+  { id:"i7_10700", label:"Intel i7-10700", score:88 },
+  { id:"i7_12700k", label:"Intel i7-12700K", score:115 },
+  { id:"i7_13700", label:"Intel i7-13700", score:130 },
+  { id:"i7_14700k", label:"Intel i7-14700K", score:145 },
+
+  // Intel Core i9
+  { id:"i9_10900k", label:"Intel i9-10900K", score:110 },
+  { id:"i9_12900k", label:"Intel i9-12900K", score:140 },
+  { id:"i9_13900k", label:"Intel i9-13900K", score:155 },
+  { id:"i9_14900k", label:"Intel i9-14900K", score:172 },
+
+  // AMD Ryzen 3
+  { id:"r3_3100", label:"Ryzen 3 3100", score:58 },
+  { id:"r3_4100", label:"Ryzen 3 4100", score:62 },
+
+  // AMD Ryzen 5
+  { id:"r5_3600", label:"Ryzen 5 3600", score:82 },
+  { id:"r5_5600x", label:"Ryzen 5 5600X", score:95 },
+  { id:"r5_7600x", label:"Ryzen 5 7600X", score:108 },
+
+  // AMD Ryzen 7
+  { id:"r7_3700x", label:"Ryzen 7 3700X", score:98 },
+  { id:"r7_5800x", label:"Ryzen 7 5800X", score:112 },
+  { id:"r7_7700x", label:"Ryzen 7 7700X", score:128 },
+  { id:"r7_7800x3d", label:"Ryzen 7 7800X3D", score:140 },
+
+  // AMD Ryzen 9
+  { id:"r9_3900x", label:"Ryzen 9 3900X", score:115 },
+  { id:"r9_5900x", label:"Ryzen 9 5900X", score:145 },
+  { id:"r9_7950x", label:"Ryzen 9 7950X", score:168 },
+
+  // AMD Threadripper
+  { id:"tr_3960x", label:"Threadripper 3960X", score:185 },
+  { id:"tr_5975wx", label:"Threadripper PRO 5975WX", score:210 },
+  { id:"tr_7995wx", label:"Threadripper PRO 7995WX", score:240 },
+
+  // Apple Silicon (estimation basée sur points Cinebench ~7500 M1 → ~9000+ pour M2+ etc.) :contentReference[oaicite:4]{index=4}
+  { id:"m1", label:"Apple M1", score:72 },
+  { id:"m1_pro", label:"Apple M1 Pro", score:95 },
+  { id:"m1_max", label:"Apple M1 Max", score:108 },
+  { id:"m1_ultra", label:"Apple M1 Ultra", score:128 },
+
+  { id:"m2", label:"Apple M2", score:80 },
+  { id:"m2_pro", label:"Apple M2 Pro", score:100 },
+  { id:"m2_max", label:"Apple M2 Max", score:115 },
+  { id:"m2_ultra", label:"Apple M2 Ultra", score:135 },
+
+  { id:"m3", label:"Apple M3", score:92 },
+  { id:"m3_pro", label:"Apple M3 Pro", score:118 },
+  { id:"m3_max", label:"Apple M3 Max", score:135 }
+
+];
+
 
   /* ================= GPU ================= */
 
